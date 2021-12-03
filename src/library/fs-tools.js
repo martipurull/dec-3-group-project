@@ -22,5 +22,6 @@ export const saveBlogCover = (fileName, fileContentAsBuffer) => writeFile(join(b
 export const saveAuthorAvatar = (fileName, fileContentAsBuffer) => writeFile(join(authorAvatarsPublicFolderPath, fileName), fileContentAsBuffer)
 
 //product & review tools
+export const getProducts = () => readJSON(productsJSONPath)
 export const saveProducts = (content) => writeJSON(productsJSONPath, content)
 export const saveProductImage = (fileName, fileContentAsBuffer) => writeFile(join(productImagesPublicFolderPath, fileName), fileContentAsBuffer)
