@@ -15,6 +15,7 @@ const blogPostsJSONPath = join(dataFolderPath, "blogPosts.json")
 const authorsJSONPath = join(dataFolderPath, "authors.json")
 const productsJSONPath = join(dataFolderPath, "products.json")
 
+
 export const getBlogPosts = () => readJSON(blogPostsJSONPath)
 export const getAuthors = () => readJSON(authorsJSONPath)
 export const postBlogPost = (content) => writeJSON(blogPostsJSONPath, content)
@@ -26,3 +27,4 @@ export const saveAuthorAvatar = (fileName, fileContentAsBuffer) => writeFile(joi
 export const getProducts = () => readJSON(productsJSONPath)
 export const saveProducts = (content) => writeJSON(productsJSONPath, content)
 export const saveProductImage = (fileName, fileContentAsBuffer) => writeFile(join(productImagesPublicFolderPath, fileName), fileContentAsBuffer)
+export const getProducts = () => readJSON(productJSONPath)
