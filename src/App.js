@@ -14,8 +14,12 @@ function App() {
       {/* <NavBar /> */}
       <Route path="/" exact component={Home} />
 
+
       <Route path="/products" exact component={ProductList} />
       <Route path="/product/:id" exact component={ProductDetails} />
+
+
+        
       <Footer />
     </BrowserRouter>
   );
