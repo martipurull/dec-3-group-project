@@ -1,1 +1,35 @@
-[{"name":"3310","description":"somthing longer","brand":"nokia","imageUrl":"https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80","price":100,"category":"smartphones","id":"f1e241ec-a39c-4e5c-ad6b-0cc135eb0d43","createdAt":"2021-12-03T10:38:23.322Z","updatedAt":"2021-12-03T10:38:23.322Z"},{"name":"3350","description":"somthing super long","brand":"nokia","imageUrl":"https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80","price":200,"category":"smartphones","id":"dea3665e-fcba-4cde-82b6-d56e9a334037","createdAt":"2021-12-03T10:40:50.698Z","updatedAt":"2021-12-03T10:40:50.698Z"}]
+[
+    {
+        "name": "3310",
+        "description": "somthing longer",
+        "brand": "nokia",
+        "imageUrl": "https://drop.ndtv.com/TECH/product_database/images/2152017124957PM_635_nokia_3310.jpeg?downsize=*:420&output-quality=80",
+        "price": 100,
+        "category": "smartphones",
+        "id": "f1e241ec-a39c-4e5c-ad6b-0cc135eb0d43",
+        "createdAt": "2021-12-03T10:38:23.322Z",
+        "updatedAt": "2021-12-03T10:38:23.322Z"
+    },
+    {
+        "name": "3350",
+        "description": "somthing super long",
+        "brand": "nokia",
+        "imageUrl": "http://localhost:3001/product-images/dea3665e-fcba-4cde-82b6-d56e9a334037.jpeg",
+        "price": 200,
+        "category": "smartphones",
+        "id": "dea3665e-fcba-4cde-82b6-d56e9a334037",
+        "createdAt": "2021-12-03T10:40:50.698Z",
+        "updatedAt": "2021-12-03T10:40:50.698Z"
+    },
+    {
+        "name": "iphone15",
+        "description": "15 phones in one, Steve Jobs style...",
+        "brand": "apple",
+        "price": 10000,
+        "category": "smartphones",
+        "id": "1b6351d8-7f47-4a28-8733-4400a3dc44d1",
+        "createdAt": "2021-12-03T11:54:38.095Z",
+        "updatedAt": "2021-12-03T11:54:38.095Z",
+        "imageUrl": "http://localhost:3001/product-images/1b6351d8-7f47-4a28-8733-4400a3dc44d1.jpeg"
+    }
+]

@@ -6,6 +6,7 @@ const { readJSON, writeJSON, writeFile } = fs
 
 
 const dataFolderPath = join(dirname(fileURLToPath(import.meta.url)), "../data")
+
 const blogCoversPublicFolderPath = join(process.cwd(), "./public/blog-covers")
 const authorAvatarsPublicFolderPath = join(process.cwd(), "./public/author-avatars")
 const productImagesPublicFolderPath = join(process.cwd(), "./public/product-images")
