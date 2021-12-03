@@ -5,17 +5,15 @@ import Home from "./views/home";
 import Blog from "./views/blog";
 import NewBlogPost from "./views/new";
 import { BrowserRouter, Route } from "react-router-dom";
-import ProductsBackOffice from "./components/ProductsBackOffice";
+
 import ProductList from "./views/productList/ProductList";
 import ProductDetails from "./views/productList/ProductDetails";
-
 
 function App() {
   return (
     <BrowserRouter>
-
       <NavBar />
-      <Route path="/backOffice" exact component={ProductsBackOffice} />
+
       {/* <NavBar /> */}
       <Route path="/" exact component={Home} />
       <Route path="/products" exact component={ProductList} />
