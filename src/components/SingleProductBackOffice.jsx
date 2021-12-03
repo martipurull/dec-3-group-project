@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import './SingleProductBackOffice.css'
+import { Link } from 'react-router-dom'
 
 
 const SingleProductBackOffice = ({ prodDetails }) => {
@@ -16,7 +17,9 @@ const SingleProductBackOffice = ({ prodDetails }) => {
                     {prodDetails.description}
                 </Card.Text>
                 <div className="d-flex justify-content-end">
-                    <Button size="sm" variant="warning">Edit</Button>
+                    <Link to="/">
+                        <Button size="sm" variant="warning">Edit</Button>
+                    </Link>
                     <Button size="sm" variant="danger">Delete</Button>
                 </div>
             </Card.Body>
