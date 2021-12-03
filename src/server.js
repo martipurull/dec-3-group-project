@@ -5,6 +5,7 @@ import blogPostsRouter from './services/blogPosts.js'
 import blogCommentsRouter from './services/blogComments.js'
 import blogCoversRouter from './services/blogCovers.js'
 import authorAvatarsRouter from './services/authorAvatars.js'
+import productsRouter from './services/products.js'
 import cors from 'cors'
 import { badRequestHandler, unauthorisedHandler, notFoundHandler, genericErrorHandler } from './errorHandlers.js'
 import { join } from 'path'
@@ -20,11 +21,12 @@ server.use(cors()) //we need this to connect front end with back end --> more on
 server.use(express.json())
 
 //endpoints
-server.use('/authors', authorsRouter)
-server.use('/authors/:authorId/uploadAvatar', authorAvatarsRouter)
-server.use('/blogPosts', blogPostsRouter)
-server.use('/blogPosts/:postId/comments', blogCommentsRouter)
-server.use('/blogPosts/:postId/uploadCover', blogCoversRouter)
+// server.use('/authors', authorsRouter)
+// server.use('/authors/:authorId/uploadAvatar', authorAvatarsRouter)
+// server.use('/blogPosts', blogPostsRouter)
+// server.use('/blogPosts/:postId/comments', blogCommentsRouter)
+// server.use('/blogPosts/:postId/uploadCover', blogCoversRouter)
+server.use('/products', productsRouter)
 
 //error handlers
 server.use(badRequestHandler)

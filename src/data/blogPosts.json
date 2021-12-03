@@ -1,21 +1,23 @@
-{
-    "title": "The strange case of Dr Cherry and Mr Lime",
-    "category": "",
-    "author": "Lurap Litmur",
-    "content": "<p>Nothing is what it seems in the pantry.</p>",
-    "id": "95d92299-03d3-4af9-84ae-99af1bd71593",
-    "createdAt": "2021-12-01T17:12:18.475Z",
-    "readTime": {
-        "value": 1,
-        "unit": "minute"
-    },
-    "cover": "http://localhost:3001/blog-covers/95d92299-03d3-4af9-84ae-99af1bd71593.jpeg",
-    "comments": [
-        {
-            "user": "Tony",
-            "text": "This is a very interesting post... I wish I had read it.",
-            "createdAt": "2021-12-02T22:11:15.905Z",
-            "id": "7d251fa7-3ff9-4a07-b23c-858ac76b84b3"
-        }
-    ]
-}
+[
+    {
+        "title": "The strange case of Dr Cherry and Mr Lime",
+        "category": "",
+        "author": "Lurap Litmur",
+        "content": "<p>Nothing is what it seems in the pantry.</p>",
+        "id": "95d92299-03d3-4af9-84ae-99af1bd71593",
+        "createdAt": "2021-12-01T17:12:18.475Z",
+        "readTime": {
+            "value": 1,
+            "unit": "minute"
+        },
+        "cover": "http://localhost:3001/blog-covers/95d92299-03d3-4af9-84ae-99af1bd71593.jpeg",
+        "comments": [
+            {
+                "user": "Tony",
+                "text": "This is a very interesting post... I wish I had read it.",
+                "createdAt": "2021-12-02T22:11:15.905Z",
+                "id": "7d251fa7-3ff9-4a07-b23c-858ac76b84b3"
+            }
+        ]
+    }
+]
