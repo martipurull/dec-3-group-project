@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Navbar, Button } from "react-bootstrap";
+import { Container, Navbar, Button, FormControl, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles.css";
@@ -11,6 +11,17 @@ export default class NavBar extends Component {
           <Navbar.Brand as={Link} to="/">
             <img className="blog-navbar-brand" alt="logo" src={logo} />
           </Navbar.Brand>
+          <InputGroup className="mb-3">
+    <FormControl
+      placeholder="Recipient's username"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+    <InputGroup.Append>
+      <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
+    </InputGroup.Append>
+  </InputGroup>
+
 
           <Button
             as={Link}
