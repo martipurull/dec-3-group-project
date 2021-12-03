@@ -7,6 +7,7 @@ import blogCoversRouter from './services/blogCovers.js'
 import authorAvatarsRouter from './services/authorAvatars.js'
 import productsRouter from './services/products.js'
 import reviewsRouter from './services/reviews.js'
+import productImageRouter from './services/productImage.js'
 import cors from 'cors'
 import { badRequestHandler, unauthorisedHandler, notFoundHandler, genericErrorHandler } from './errorHandlers.js'
 import { join } from 'path'
@@ -29,6 +30,7 @@ server.use(express.json())
 // server.use('/blogPosts/:postId/uploadCover', blogCoversRouter)
 server.use('/products', productsRouter)
 server.use('/products/:productId/reviews', reviewsRouter)
+server.use('/products/:productId', productImageRouter)
 
 //error handlers
 server.use(badRequestHandler)

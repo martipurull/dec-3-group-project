@@ -37,7 +37,6 @@ blogPostsRouter.get('/', async (req, res, next) => {
         } else {
             res.send(blogPostsArray)
         }
-        res.send(blogPostsArray)
     } catch (error) {
         next(error)
     }
