@@ -5,14 +5,17 @@ import Home from "./views/home";
 import Blog from "./views/blog";
 import NewBlogPost from "./views/new";
 import { BrowserRouter, Route } from "react-router-dom";
+import ProductList from "./views/productList/ProductList";
+import ProductDetails from "./views/productList/ProductDetails";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Route path="/" exact component={Home} />
-      <Route path="/blog/:id" exact component={Blog} />
-      <Route path="/new" exact component={NewBlogPost} />
+
+      <Route path="/products" exact component={ProductList} />
+      <Route path="/product/:id" exact component={ProductDetails} />
       <Footer />
     </BrowserRouter>
   );
