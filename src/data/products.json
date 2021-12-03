@@ -30,6 +30,15 @@
         "id": "1b6351d8-7f47-4a28-8733-4400a3dc44d1",
         "createdAt": "2021-12-03T11:54:38.095Z",
         "updatedAt": "2021-12-03T11:54:38.095Z",
-        "imageUrl": "http://localhost:3001/product-images/1b6351d8-7f47-4a28-8733-4400a3dc44d1.jpeg"
+        "imageUrl": "http://localhost:3001/product-images/1b6351d8-7f47-4a28-8733-4400a3dc44d1.jpeg",
+        "reviews": [
+            {
+                "comment": "A good book but definitely I don't like many parts of the plot",
+                "rate": 3,
+                "createdAt": "2021-12-03T14:28:43.218Z",
+                "id": "13a5b908-d3de-4059-a56c-b01425a4a77d",
+                "productId": "1b6351d8-7f47-4a28-8733-4400a3dc44d1"
+            }
+        ]
     }
 ]

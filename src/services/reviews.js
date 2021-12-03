@@ -4,28 +4,29 @@ import { validationResult } from 'express-validator'
 import { reviewsValidation } from './reviewsValidation.js'
 import createHttpError from 'http-errors'
 import striptags from 'striptags'
-import { getProducts, saveProducts} from '../library/fs-tools.js'
+import { getProducts, saveProducts } from '../library/fs-tools.js'
 
-const reviewsRouter  = express.Router({ mergeParams: true })
+const reviewsRouter = express.Router({ mergeParams: true })
 
 //endpoints
-reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
+reviewsRouter.post('/', reviewsValidation, async (req, res, next) => {
     try {
         const errorList = validationResult(req)
         if (!errorList.isEmpty()) {
             next(createHttpError(400, "There some errors on your submission, namely: ", { errorList }))
-        } else {const products = await getProducts()
+        } else {
+            const products = await getProducts()
             const currentIndex = products.findIndex(product => product.id === req.params.productId)
             const newComment = { ...req.body, createdAt: new Date(), id: uuidv4(), productId: req.params.productId }
             if (products[currentIndex].reviews) {
                 products[currentIndex].reviews.push(newComment)
             } else {
-                products[currentIndex].reviews= []
+                products[currentIndex].reviews = []
                 products[currentIndex].reviews.push(newComment)
             }
-             await saveProducts(products)
+            await saveProducts(products)
             res.status(201).send(`Comment added successfully to blog post with id ${ req.params.productId }`)
-           
+
         }
     } catch (error) {
         next(error)
@@ -50,60 +51,55 @@ reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
 //             reviews.push(currentReview)
 //             await postReviews(reviews)
 //             res.status(201).send(`Comment added successfully to blog post with id ${ req.params.productId }`)
-           
+
 //         }
 //     } catch (error) {
 //         next(error)
 //     }
 // })
 
-reviewsRouter .get('/', async (req, res, next) => {
+reviewsRouter.get('/', async (req, res, next) => {
     try {
-        const reviewsArray = await getReviews()
-        if (req.query && req.query.comment) {
-            const filteredReviews = reviewsArray.filter(review=> review.comment.includes(req.query.comment))
-            res.send(filteredReviews)
-        } else {
-            res.send(reviewsArray)
-        }
-        res.send(reviewsArray)
+        const products = await getProducts()
+        const selectedProduct = products.find(product => product.id === req.params.productId)
+        res.send(selectedProduct.reviews)
     } catch (error) {
         next(error)
     }
 })
 
-reviewsRouter .get('/:productId', async (req, res, next) => {
+reviewsRouter.get('/:reviewId', async (req, res, next) => {
     try {
-        const reviewsArray = await getReviews()
-        const reviewFound = reviewsArray.find(review => review.id === req.params.productId)
-        if (reviewFound) {
-            res.send(reviewFound)
-        } else {
-            next(createHttpError(404, `Review with id ${ req.params.productId } does not exist or has been deleted.`))
-        }
+        const products = await getProducts()
+        const selectedProduct = products.find(product => product.id === req.params.productId)
+        const selectedReview = selectedProduct.reviews.find(review => review.id === req.params.reviewId)
+        res.send(selectedReview)
     } catch (error) {
         next(error)
     }
 })
 
-reviewsRouter .put('/:productId', async (req, res, next) => {
+reviewsRouter.put('/:reviewId', async (req, res, next) => {
     try {
-        const reviewsArray = await getReviews()
-        const reviewToEditIndex = reviewsArray.findIndex(review => review.id === req.params.productId)
-        const editedReview = { ...reviewsArray[reviewToEditIndex], ...req.body, updatedAt: new Date() }
-        reviewsArray[reviewToEditIndex] = editedReview
-        await postReviews(reviewsArray)
+        const products = await getProducts()
+        const selectedProduct = products.find(product => product.id === req.params.id)
+        const reviewToEditIndex = selectedProduct.reviews.findIndex(review => review.id === req.params.reviewId)
+        const editedReview = { ...selectedProduct.reviews[reviewToEditIndex], ...req.body, updatedAt: new Date() }
+        selectedProduct.reviews[reviewToEditIndex] = editedReview
+        await saveProducts(products)
         res.send(editedReview)
     } catch (error) {
         next(error)
     }
 })
 
-reviewsRouter .delete('/:productId', async (req, res, next) => {
+reviewsRouter.delete('/:reviewId', async (req, res, next) => {
     try {
-        const reviewsArray = await getReviews()
-        const remainingReviewsArray = reviewsArray.filter(review => review.id !== req.params.productId)
-        await postReviews(remainingReviewsArray)
+        const products = await getProducts()
+        const selectedProduct = products.find(product => product.id === req.params.id)
+        const remainingReviewsArray = selectedProduct.reviews.filter(review => review.id !== req.params.reviewId)
+        selectedProduct.reviews = remainingReviewsArray
+        await saveProducts(products)
         res.status(204).send()
     } catch (error) {
         next(error)
@@ -112,4 +108,4 @@ reviewsRouter .delete('/:productId', async (req, res, next) => {
 
 
 
-export default reviewsRouter 
+export default reviewsRouter

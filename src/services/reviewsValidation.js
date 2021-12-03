@@ -1,10 +1,10 @@
 import { body } from 'express-validator'
 
-export const reviewsValidation = 
-    [body("comment").exists().withMessage("leave your comment to our product!"),
-    body("rate").exists().withMessage("rate our product!"),
-    body("productId").exists().withMessage("We need productId  if you would like to leave review.")]
-   
+export const reviewsValidation = [
+    body("comment").exists().withMessage("leave your comment to our product!"),
+    body("rate").exists().withMessage("rate our product!")
+]
+
 
 
 
