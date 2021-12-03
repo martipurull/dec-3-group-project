@@ -25,7 +25,7 @@ reviewsRouter.post('/', reviewsValidation, async (req, res, next) => {
                 products[currentIndex].reviews.push(newComment)
             }
             await saveProducts(products)
-            res.status(201).send(`Comment added successfully to blog post with id ${ req.params.productId }`)
+            res.status(201).send(`Comment added successfully to ${ products[currentIndex].name }`)
 
         }
     } catch (error) {
@@ -82,7 +82,7 @@ reviewsRouter.get('/:reviewId', async (req, res, next) => {
 reviewsRouter.put('/:reviewId', async (req, res, next) => {
     try {
         const products = await getProducts()
-        const selectedProduct = products.find(product => product.id === req.params.id)
+        const selectedProduct = products.find(product => product.id === req.params.productId)
         const reviewToEditIndex = selectedProduct.reviews.findIndex(review => review.id === req.params.reviewId)
         const editedReview = { ...selectedProduct.reviews[reviewToEditIndex], ...req.body, updatedAt: new Date() }
         selectedProduct.reviews[reviewToEditIndex] = editedReview
@@ -96,7 +96,7 @@ reviewsRouter.put('/:reviewId', async (req, res, next) => {
 reviewsRouter.delete('/:reviewId', async (req, res, next) => {
     try {
         const products = await getProducts()
-        const selectedProduct = products.find(product => product.id === req.params.id)
+        const selectedProduct = products.find(product => product.id === req.params.productId)
         const remainingReviewsArray = selectedProduct.reviews.filter(review => review.id !== req.params.reviewId)
         selectedProduct.reviews = remainingReviewsArray
         await saveProducts(products)

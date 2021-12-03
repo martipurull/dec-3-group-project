@@ -33,10 +33,18 @@
         "imageUrl": "http://localhost:3001/product-images/1b6351d8-7f47-4a28-8733-4400a3dc44d1.jpeg",
         "reviews": [
             {
-                "comment": "A good book but definitely I don't like many parts of the plot",
-                "rate": 3,
+                "comment": "This is a great phone you should travel to the future to get one.",
+                "rate": 5,
                 "createdAt": "2021-12-03T14:28:43.218Z",
                 "id": "13a5b908-d3de-4059-a56c-b01425a4a77d",
+                "productId": "1b6351d8-7f47-4a28-8733-4400a3dc44d1",
+                "updatedAt": "2021-12-03T14:33:43.003Z"
+            },
+            {
+                "comment": "I really hate EVERYTHING, I AM A TROLL!",
+                "rate": 1,
+                "createdAt": "2021-12-03T14:36:01.108Z",
+                "id": "037c80c5-585c-4323-8f73-d0abe52540eb",
                 "productId": "1b6351d8-7f47-4a28-8733-4400a3dc44d1"
             }
         ]
