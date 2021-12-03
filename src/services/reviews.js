@@ -4,9 +4,9 @@ import { validationResult } from 'express-validator'
 import { reviewsValidation } from './reviewsValidation.js'
 import createHttpError from 'http-errors'
 import striptags from 'striptags'
-import { getReviews, postReviews } from '../library/fs-tools.js'
+import { getProducts, saveProducts} from '../library/fs-tools.js'
 
-const reviewsRouter  = express.Router()
+const reviewsRouter  = express.Router({ mergeParams: true })
 
 //endpoints
 reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
@@ -14,17 +14,16 @@ reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
         const errorList = validationResult(req)
         if (!errorList.isEmpty()) {
             next(createHttpError(400, "There some errors on your submission, namely: ", { errorList }))
-        } else {const reviews = await getReviews()
-            const currentReview = reviews.find(review => review.id === req.params.productId)
-            const newComment = { ...req.body, createdAt: new Date(), id: uuidv4() }
-            if (currentReview.comments) {
-                currentReview.comments.push(newComment)
+        } else {const products = await getProducts()
+            const currentIndex = products.findIndex(product => product.id === req.params.productId)
+            const newComment = { ...req.body, createdAt: new Date(), id: uuidv4(), productId: req.params.productId }
+            if (products[currentIndex].reviews) {
+                products[currentIndex].reviews.push(newComment)
             } else {
-                currentReview.comments = []
-                currentReview.comments.push(newComment)
+                products[currentIndex].reviews= []
+                products[currentIndex].reviews.push(newComment)
             }
-            reviews.push(currentReview)
-            await postReviews(reviews)
+             await saveProducts(products)
             res.status(201).send(`Comment added successfully to blog post with id ${ req.params.productId }`)
            
         }
@@ -32,6 +31,31 @@ reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
         next(error)
     }
 })
+
+
+// reviewsRouter .post('/', reviewsValidation , async (req, res, next) => {
+//     try {
+//         const errorList = validationResult(req)
+//         if (!errorList.isEmpty()) {
+//             next(createHttpError(400, "There some errors on your submission, namely: ", { errorList }))
+//         } else {const reviews = await getReviews()
+//             const currentReview = reviews.find(review => review.id === req.params.productId)
+//             const newComment = { ...req.body, createdAt: new Date(), id: uuidv4(), productId: req.params.productId }
+//             if (currentIndex.reviews) {
+//                 currentIndex.reviews.push(newComment)
+//             } else {
+//                 currentIndex.reviews = []
+//                 currentIndex.reviews.push(newComment)
+//             }
+//             reviews.push(currentReview)
+//             await postReviews(reviews)
+//             res.status(201).send(`Comment added successfully to blog post with id ${ req.params.productId }`)
+           
+//         }
+//     } catch (error) {
+//         next(error)
+//     }
+// })
 
 reviewsRouter .get('/', async (req, res, next) => {
     try {

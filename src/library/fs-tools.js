@@ -13,7 +13,7 @@ const productImagesPublicFolderPath = join(process.cwd(), "./public/product-imag
 const blogPostsJSONPath = join(dataFolderPath, "blogPosts.json")
 const authorsJSONPath = join(dataFolderPath, "authors.json")
 const productsJSONPath = join(dataFolderPath, "products.json")
-const reviewsJSONPath = join(dataFolderPath, "products.json")
+
 
 export const getBlogPosts = () => readJSON(blogPostsJSONPath)
 export const getAuthors = () => readJSON(authorsJSONPath)
@@ -25,5 +25,4 @@ export const saveAuthorAvatar = (fileName, fileContentAsBuffer) => writeFile(joi
 //product & review tools
 export const saveProducts = (content) => writeJSON(productsJSONPath, content)
 export const saveProductImage = (fileName, fileContentAsBuffer) => writeFile(join(productImagesPublicFolderPath, fileName), fileContentAsBuffer)
-export const getReviews = () => readJSON(reviewsJSONPath)
-export const postReviews = (content) => writeJSON(reviewsJSONPath, content)
+export const getProducts = () => readJSON(productJSONPath)
